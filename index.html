@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CuboMatic | Área del cubo</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="encabezado">
+    <div class="logo-cubo" aria-hidden="true"><span></span></div>
+    <div class="marca">
+      <h1>Cubo<span>Matic</span></h1>
+      <p>¡Descubre el área del cubo!</p>
+    </div>
+    <div class="eslogan">La geometría también<br>está en tu mundo</div>
+    <div class="grado">Sexto Grado 🎓</div>
+  </header>
+
+  <main class="paneles">
+    <section class="panel formulario-panel">
+      <h2>▤ Agregar ejercicio</h2>
+      <form id="formulario">
+        <label for="nombre">Nombre del ejercicio:</label>
+        <input id="nombre" type="text" placeholder="Ej. Cubo pequeño" required maxlength="60">
+
+        <div class="campos">
+          <div class="campo-arista">
+            <label for="arista">Medida de la arista:</label>
+            <input id="arista" type="number" min="0.01" step="any" value="4" required>
+          </div>
+          <div class="campo-unidad">
+            <label for="unidad">Unidad:</label>
+            <select id="unidad">
+              <option value="mm">mm</option>
+              <option value="cm" selected>cm</option>
+              <option value="m">m</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="botones-form">
+          <button class="btn btn-verde" type="button" id="calcular">▦ Calcular</button>
+          <button class="btn btn-azul" type="submit">▣ Guardar</button>
+        </div>
+        <button class="btn btn-claro ancho" type="reset">🧹 Limpiar formulario</button>
+        <p class="ayuda-form" id="mensaje" role="status">Escribe un nombre y una medida para comenzar.</p>
+      </form>
+    </section>
+
+    <section class="panel resultado-panel">
+      <h2>▦ Resultado</h2>
+      <div class="resultado-contenido">
+        <div class="cubo-y-formula">
+          <div class="cubo-dibujo" aria-label="Ilustración de un cubo">
+            <svg viewBox="0 0 220 190" role="img" aria-label="Cubo con tres caras visibles">
+              <polygon points="28,55 100,17 190,48 118,88" fill="#73c9f5" stroke="#123c79" stroke-width="3"/>
+              <polygon points="28,55 118,88 118,170 28,132" fill="#54b8f0" stroke="#123c79" stroke-width="3"/>
+              <polygon points="118,88 190,48 190,130 118,170" fill="#2499e2" stroke="#123c79" stroke-width="3"/>
+              <polyline points="100,17 100,98 118,88" fill="none" stroke="#2678cb" stroke-width="2" stroke-dasharray="6 5"/>
+              <line x1="100" y1="98" x2="28" y2="132" stroke="#2678cb" stroke-width="2" stroke-dasharray="6 5"/>
+              <line x1="100" y1="98" x2="171" y2="130" stroke="#2678cb" stroke-width="2" stroke-dasharray="6 5"/>
+            </svg>
+          </div>
+          <p class="medida" id="medidaVista">l = 4 cm</p>
+        </div>
+        <div class="formula">
+          <strong>Fórmula:</strong>
+          <div class="formula-grande">A<sub>T</sub> = 6 × l<sup>2</sup></div>
+          <p><b>A<sub>T</sub></b> = área total del cubo</p>
+          <p><b>l</b> = longitud de la arista</p>
+          <p><b>6</b> = número de caras</p>
+        </div>
+      </div>
+      <div class="detalle-resultado">
+        <div class="procedimiento">
+          <strong>Procedimiento:</strong>
+          <p id="paso1">1. 4² = 16</p>
+          <p id="paso2">2. 6 × 16 = 96</p>
+        </div>
+        <div class="total">
+          <strong>Área total:</strong>
+          <output id="areaTotal">96 cm²</output>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel lista-panel">
+      <h2>☷ Lista de ejercicios</h2>
+      <div class="tabla-contenedor">
+        <table>
+          <thead>
+            <tr><th>#</th><th>Nombre</th><th>Arista</th><th>Área total</th><th>Acciones</th></tr>
+          </thead>
+          <tbody id="listaEjercicios">
+            <tr class="vacio"><td colspan="5">Aún no hay ejercicios guardados.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <aside class="recordatorio">
+        <span class="bombillo">♧</span>
+        <div><strong>Recuerda:</strong><p>El área total de un cubo se calcula multiplicando 6 por el cuadrado de la medida de la arista.</p></div>
+      </aside>
+    </section>
+  </main>
+
+  <nav class="acciones-principales" aria-label="Acciones de ejercicios">
+    <button class="accion accion-agregar" id="nuevo">✚ <span>Agregar<small>Nuevo ejercicio</small></span></button>
+    <button class="accion accion-modificar" id="modificarSeleccionado">✎ <span>Modificar<small>Editar ejercicio seleccionado</small></span></button>
+    <button class="accion accion-eliminar" id="eliminarSeleccionado">▤ <span>Eliminar<small>Borrar ejercicio seleccionado</small></span></button>
+    <button class="accion accion-consultar" id="consultar">⟳ <span>Consultar<small>Ver lista de ejercicios</small></span></button>
+  </nav>
+
+  <footer>Proyecto educativo de Tecnología · Sexto grado · CuboMatic</footer>
+  <script src="funciones.js"></script>
+</body>
+</html>
